@@ -1,0 +1,6 @@
+/* resetar as configurações do css*/
+*{/* seletor universal */
+    margin: 0;/* ddddddd */
+    padding: 0;/* zzzzzzzzz */
+    box-sizing: border-box;/* aaaaaaaaaa */
+}
