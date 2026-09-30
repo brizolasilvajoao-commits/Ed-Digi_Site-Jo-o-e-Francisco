@@ -1,24 +1,178 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<!-- O atributo lang="pt-BR" informa o idioma principal da página para leitores de tela, garantindo a pronúncia correta. -->
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- Meta tag essencial para garantir que o layout se adapte a celulares e tablets (responsividade). -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblio Mundi | Biblioteca Pública</title>
+    <!-- Vinculação com o arquivo de estilos externo -->
     <link rel="stylesheet" href="style.css">
-    <title>Biblio Mundi</title>
 </head>
 <body>
- <h1>Biblio Mundi</h1>
- <h2>Quem somos:</h2>
- <p>Somos uma biblioteca pública, que visa trazer entretenimento para as pessoas, juntamente com o conhecimento.</p>
- <h2>O que fazemos:</h2>
- <p> Fazemos com que todos transformem a leitura em algo divertido e rotineiro.</p>
- <h2>Qual nosso objetivo:</h2>
- <p>O objetivo principal é democratizar o acesso à informação, ao conhecimento e à cultura, servindo como um espaço essencial para o desenvolvimento intelectual, social e educacional de uma comunidade.</p>
- <img src="images.png" alt="Livro aberto com circulo azul em volta">
-<h2>Nossos Produtos</h2>
-<li>Dom Casmurro (Machado de Assis), O Pequeno Príncipe (Antoine de Saint-Exupéry), 1984 (George Orwell)</li>
-<a href="">Saiba mais sobre nosso setor</a>
-<h2>Contato:</h2>
-<address>6127218163</address>
+
+    <!-- 
+      LINK DE PULO (Skip Link): 
+      Fundamental para acessibilidade por teclado/leitores de tela. 
+      Permite pular direto para o conteúdo principal, evitando navegar pelo menu em todas as páginas.
+    -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- 
+      CABEÇALHO (<header>):
+      Representa o topo do site, contendo a marca/logotipo e a navegação principal.
+    -->
+    <header class="site-header">
+        <div class="container header-container">
+            <!-- Nome da biblioteca estilizado como link para a página inicial -->
+            <div class="logo">
+                <a href="#" aria-label="Biblio Mundi - Página Inicial">Biblio Mundi</a>
+            </div>
+
+            <!-- 
+              NAVEGAÇÃO PRINCIPAL (<nav>):
+              Agrupa os links de navegação. O aria-label diferencia esta área de outras navegações.
+            -->
+            <nav aria-label="Menu principal" class="site-nav">
+                <ul class="nav-list">
+                    <li><a href="#sobre">Quem Somos</a></li>
+                    <li><a href="#servicos">O que Fazemos</a></li>
+                    <li><a href="#produtos">Livros em Destaque</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 
+      CONTEÚDO PRINCIPAL (<main>):
+      Agrupa o conteúdo central e exclusivo da página. O id conecta-se com o link de pulo acima.
+    -->
+    <main id="conteudo-principal">
+
+        <!-- SEÇÃO DE APRESENTAÇÃO / HERO -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <!-- O H1 é o título principal absoluto da página. Deve existir apenas um por página. -->
+                <h1>Democratizando o acesso à leitura, ao conhecimento e à cultura</h1>
+                <p>Um espaço essencial para o desenvolvimento intelectual, social e educacional de toda a nossa comunidade.</p>
+                <div class="hero-actions">
+                    <a href="#produtos" class="btn btn-primary">Conheça Nossos Livros</a>
+                    <a href="#contato" class="btn btn-secondary">Entre em Contato</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO "QUEM SOMOS" E "OBJETIVO" -->
+        <section id="sobre" class="about-section">
+            <div class="container about-container">
+                <div class="about-text">
+                    <h2>Quem somos e qual nosso objetivo</h2>
+                    <p>Somos uma biblioteca pública que visa trazer entretenimento e conhecimento para as pessoas. Nosso objetivo principal é democratizar o acesso à informação, servindo como um espaço essencial para o desenvolvimento intelectual, social e educacional de uma comunidade.</p>
+                </div>
+                <div class="about-image">
+                    <!-- Imagem com texto alternativo descritivo para leitores de tela (A11y) -->
+                    <img src="images.png" alt="Ilustração estilizada de um livro aberto com círculo azul em volta">
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO "O QUE FAZEMOS" -->
+        <section id="servicos" class="mission-section">
+            <div class="container">
+                <h2>O que fazemos</h2>
+                <p class="mission-highlight">Fazemos com que todos transformem a leitura em algo divertido e rotineiro.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE PRODUTOS / LIVROS EM DESTAQUE -->
+        <section id="produtos" class="products-section">
+            <div class="container">
+                <h2>Nossos Livros e Obras em Destaque</h2>
+                <p class="section-subtitle">Alguns dos títulos clássicos disponíveis em nosso acervo:</p>
+                
+                <!-- Grade utilizando elementos article para representar itens independentes -->
+                <div class="products-grid">
+                    <article class="product-card">
+                        <h3>Dom Casmurro</h3>
+                        <p class="author">Machado de Assis</p>
+                        <p>A clássica e intrigante obra sobre a dúvida de Bentinho em relação a Capitu.</p>
+                    </article>
+                    <article class="product-card">
+                        <h3>O Pequeno Príncipe</h3>
+                        <p class="author">Antoine de Saint-Exupéry</p>
+                        <p>Uma jornada poética e filosófica através de diferentes planetas e lições de vida.</p>
+                    </article>
+                    <article class="product-card">
+                        <h3>1984</h3>
+                        <p class="author">George Orwell</p>
+                        <p>Um romance distópico marcante sobre vigilância extrema e liberdade individual.</p>
+                    </article>
+                </div>
+
+                <!-- Simulador de botão/link interativo estruturado corretamente -->
+                <div class="products-more">
+                    <a href="#" class="btn btn-secondary">Saiba mais sobre nosso setor</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE CONTATO COM FORMULÁRIO ACESSÍVEL -->
+        <section id="contato" class="contact-section">
+            <div class="container">
+                <h2>Contato</h2>
+                <p>Fale conosco ou tire suas dúvidas através do formulário ou informações abaixo.</p>
+                
+                <div class="contact-wrapper">
+                    <!-- Informações de contato usando a tag semântica <address> -->
+                    <div class="contact-info">
+                        <h3>Informações</h3>
+                        <p><strong>Telefone / WhatsApp:</strong> <address style="display:inline;"><a href="tel:6127218163">(61) 2721-8163</a></address></p>
+                        <p><strong>Atendimento:</strong> Segunda a Sexta, das 8h às 18h.</p>
+                    </div>
+
+                    <!-- 
+                      FORMULÁRIO ACESSÍVEL (<form>):
+                      Cada <input> está vinculado rigidamente ao seu <label> correspondente por meio dos atributos 'for' e 'id'.
+                    -->
+                    <form action="#" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="nome">Seu nome completo:</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Seu e-mail:</label>
+                            <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensagem">Sua mensagem ou dúvida:</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                        </div>
+
+                        <!-- Botão de envio real de formulário -->
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 
+      RODAPÉ (<footer>):
+      Contém créditos de direitos autorais e links de rodapé.
+    -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Biblio Mundi. Todos os direitos reservados.</p>
+            <ul class="footer-links">
+                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#">Termos de Uso</a></li>
+            </ul>
+        </div>
+    </footer>
+
 </body>
 </html>

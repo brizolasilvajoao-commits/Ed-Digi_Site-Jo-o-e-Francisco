@@ -1,87 +1,468 @@
-/* resetar as configurações do css*/
-*{/* seletor universal */
-    margin: 0;/* ddddddd */
-    padding: 0;/* zzzzzzzzz */
-    box-sizing: border-box;/* aaaaaaaaaa */
+/* ==========================================
+   1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
+   ================================---------- */
+:root {
+    --primary-color: #1d4ed8;       /* Azul forte institucional (Garante contraste ideal WCAG AA) */
+    --primary-hover: #1e40af;       /* Azul escuro para hover */
+    --text-color: #1f2937;          /* Cinza escuro para excelente leitura de texto */
+    --bg-light: #f3f4f6;            /* Fundo suave e claro */
+    --white: #ffffff;
+    --border-color: #d1d5db;
+    --focus-color: #f59e0b;         /* Amarelo de alto contraste para foco de teclado */
+}
+
+/* Reset básico de margens e preenchimentos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-
-background-color: #f4f6f9;
-    color: #333333;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
     line-height: 1.6;
-    padding: 20px;
+    background-color: var(--white);
+}
+
+/* Container centralizador de largura máxima para o layout */
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 
-h1 {
-    color: #1a365d;
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
+/* ==========================================
+   2. ACESSIBILIDADE: SKIP LINK E FOCUS
+   ================================---------- */
 
-h2 {
-    color: #2b6cb0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #cbd5e0;
-    padding-bottom: 5px;
-}
-
-p {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-}
-
-img {
-    max-width: 220px;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto 20px auto;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-
-
-ul {
-    list-style-type: square;
-    padding-left: 25px;
-    margin-bottom: 15px;
-}
-
-li {
-    padding: 5px 0;
+/* Link de pulo oculto visualmente até receber foco do teclado */
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 16px;
+    z-index: 100;
+    transition: top 0.3s ease;
+    text-decoration: none;
     font-weight: bold;
 }
 
-a {
-    display: inline-block;
-    background-color: #3182ce;
-    color: #ffffff;
-    padding: 10px 18px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 10px 0;
+/* Torna o link visível no topo da página quando o usuário pressionar Tab */
+.skip-link:focus {
+    top: 0;
 }
 
-address {
-    font-style: normal;
-    background-color: #e2e8f0;
-    padding: 15px;
-    border-radius: 6px;
-    margin-top: 10px;
+/* 
+  FOCO VISÍVEL (:focus-visible):
+  Obrigatório para navegação por teclado. Cria um contorno bem destacado 
+  quando o usuário navega pelos elementos interativos usando a tecla Tab.
+*/
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
 }
-body {
+
+
+/* ==========================================
+   3. CABEÇALHO E NAVEGAÇÃO (FLEXBOX)
+   ================================---------- */
+.site-header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* 
+  FLEXBOX NO HEADER:
+  display: flex alinha o logotipo à esquerda e o menu à direita usando space-between.
+  align-items: center centraliza verticalmente os elementos internos.
+*/
+.header-container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
 }
 
-/* Limitando a largura máxima para centralizar o conteúdo no meio da tela */
-h1, h2, p, ul, a, address {
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem; /* Espaço uniforme entre os itens do menu */
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-list a:hover {
+    color: var(--primary-color);
+}
+
+
+/* ==========================================
+   4. SEÇÃO HERO (APRESENTAÇÃO)
+   ================================---------- */
+.hero-section {
+    background-color: var(--bg-light);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+/* 
+  FLEXBOX NA HERO:
+  Organiza os textos e botões em uma coluna centralizada.
+*/
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    max-width: 800px;
+    color: var(--primary-color);
+}
+
+.hero-section p {
+    font-size: 1.125rem;
+    max-width: 650px;
+    color: #4b5563;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+
+/* ==========================================
+   5. BOTÕES E COMPONENTES INTERATIVOS
+   ================================---------- */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+
+/* ==========================================
+   6. SEÇÃO "QUEM SOMOS" (FLEXBOX)
+   ================================---------- */
+.about-section {
+    padding: 5rem 0;
+}
+
+/* 
+  FLEXBOX EM DUAS COLUNAS:
+  Distribui o texto explicativo de um lado e a ilustração do outro em telas maiores.
+*/
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    font-size: 1.125rem;
+    color: #374151;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* ==========================================
+   7. SEÇÃO "O QUE FAZEMOS" (MISSÃO)
+   ================================---------- */
+.mission-section {
+    background-color: var(--bg-light);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.mission-section h2 {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.mission-highlight {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+
+/* ==========================================
+   8. SEÇÃO DE PRODUTOS / LIVROS (FLEXBOX)
+   ================================---------- */
+.products-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.products-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: #4b5563;
+    margin-bottom: 2.5rem;
+}
+
+/* 
+  FLEXBOX PARA OS CARDS DE LIVROS:
+  flex-wrap: wrap permite que os cards fiquem lado a lado e quebrem linha automaticamente quando o espaço diminui.
+*/
+.products-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.product-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    flex: 1 1 280px; /* Cresce, encolhe e assume largura base de 280px */
+    max-width: 350px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.product-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.product-card .author {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.products-more {
+    margin-top: 2rem;
+}
+
+
+/* ==========================================
+   9. SEÇÃO DE CONTATO E FORMULÁRIO (FLEXBOX)
+   ================================---------- */
+.contact-section {
+    background-color: var(--bg-light);
+    padding: 5rem 0;
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.contact-section > .container > p {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 3rem;
+}
+
+/* Flexbox dividindo informações de contato e formulário lado a lado */
+.contact-wrapper {
+    display: flex;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.75rem;
+}
+
+.contact-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
     width: 100%;
-    max-width: 700px;
+}
+
+.contact-form .btn {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+
+/* ==========================================
+   10. RODAPÉ (FOOTER)
+   ================================---------- */
+.site-footer {
+    background-color: #111827;
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   11. RESPONSIVIDADE (MEDIA QUERIES)
+   ================================---------- */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .about-container,
+    .contact-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
 }
